@@ -69,3 +69,18 @@ export function showRecipeDetails(recipe) {
 
   details.classList.remove("hidden");
 }
+export async function renderRecipes(query = "") {
+  const container = document.getElementById("repas");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const recipes = query
+    ? await searchRecipes(query)
+    : await getAllRecipes();
+
+  recipes.forEach(recipe => {
+    const card = createRecipeCard(recipe);
+    container.appendChild(card);
+  });
+}
