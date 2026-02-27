@@ -1,0 +1,29 @@
+@import 'variables';
+@import 'cards';
+@import 'modal';
+@import 'responsive';
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: $bg-color;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+input#search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.hidden {
+  display: none;
+}
