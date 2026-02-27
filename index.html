@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFlow</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <h2>MENU</h2>
+        <input type="text" id="search-input" placeholder="Search...">
+    </header>
+
+    <main id="main">
+        <div id="repas" >
+
+        </div>
+
+        <section id="recipe-details" class="hidden">
+         
+            <img id="detail-image" />
+            <h2 id="detail-name"></h2>
+            <p id="detail-time"></p>
+            <p id="detail-calories"></p>
+            <p id="ingredients"></p>
+            <p id="instructions"></p>
+        </section>
+    </main>
+    <nav class="bottom-nav">
+        <button id="home-btn">
+            <i class="fa-solid fa-house"></i>
+        </button>
+        <button id="fav-btn">
+            <i class="fa-solid fa-heart"></i>
+        </button>
+    </nav>
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
