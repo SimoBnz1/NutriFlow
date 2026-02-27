@@ -84,3 +84,23 @@ export async function renderRecipes(query = "") {
     container.appendChild(card);
   });
 }
+
+import { getFavorites } from "../services/storageService.js";
+
+export function renderFavorites() {
+  const container = document.getElementById("repas");
+  container.innerHTML = "";
+
+  const favorites = getFavorites();
+
+  if (favorites.length === 0) {
+    container.innerHTML = "<p>Aucun favori</p>";
+    return;
+  }
+
+  favorites.forEach(recipe => {
+    const card = createRecipeCard(recipe);
+    container.appendChild(card);
+  });
+ 
+}
