@@ -48,3 +48,24 @@ export function createRecipeCard(recipe) {
 
   return card;
 }
+
+export function showRecipeDetails(recipe) {
+  const container = document.getElementById("repas");
+  const details = document.getElementById("recipe-details");
+  details.classList.add("recipe-card");
+  
+
+  container.innerHTML = "";
+
+  document.getElementById("detail-image").src = recipe.image;
+  document.getElementById("detail-name").textContent = recipe.name;
+  document.getElementById("detail-time").textContent =
+    "Temps : " + recipe.prepTimeMinutes + " min";
+  document.getElementById("detail-calories").textContent =
+    "Calories : " + recipe.caloriesPerServing;
+  document.getElementById("ingredients").textContent="ingredients"+ recipe.ingredients.forEach((t) =>{
+    `<li>${t}</li>`
+  })
+
+  details.classList.remove("hidden");
+}
