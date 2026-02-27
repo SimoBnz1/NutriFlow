@@ -1,0 +1,50 @@
+import { getAllRecipes, searchRecipes } from "../api/recipeProvider.js";
+import {  addToFavorites, removeFromFavorites, isFavorite } from "../services/storageService.js";
+
+
+export function createRecipeCard(recipe) {
+  const card = document.createElement("div");
+  card.classList.add("recipe-card");
+
+  const favorite = isFavorite(recipe.id);
+  const calories = recipe.caloriesPerServing;
+  let caloriesColor = "";
+  if (calories < 400) caloriesColor = "green";
+  else if (calories <= 800) caloriesColor = "orange";
+  else caloriesColor = "red";
+
+  card.innerHTML = `
+    <img src="${recipe.image}" alt="${recipe.name}">
+    <h3>${recipe.name}</h3>
+    <div class="div1">
+      <p><i class="fa-regular fa-clock"></i> ${recipe.prepTimeMinutes} min</p>
+      <p>Calories: <span style="color:${caloriesColor}; font-weight:bold">${calories}</span></p>
+    </div>
+    <button class="fav-btn">
+      <i class="${favorite ? "fa-solid" : "fa-regular"} fa-heart"></i>
+    </button>
+  `;
+
+
+  const favBtn = card.querySelector(".fav-btn");
+  const heartIcon = favBtn.querySelector("i");
+
+  favBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+    if (isFavorite(recipe.id)) {
+      removeFromFavorites(recipe.id);
+      heartIcon.classList.remove("fa-solid");
+      heartIcon.classList.add("fa-regular");
+    } else {
+      addToFavorites(recipe);
+      heartIcon.classList.remove("fa-regular");
+      heartIcon.classList.add("fa-solid");
+    }
+  });
+
+  card.addEventListener("click", () => {
+    showRecipeDetails(recipe);
+  });
+
+  return card;
+}
