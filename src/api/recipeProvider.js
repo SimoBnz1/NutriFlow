@@ -14,4 +14,5 @@ export async function getAllRecipes() {
 export async function searchRecipes(query) {
   const recipes = await getAllRecipes();
   return recipes.filter(r => r.name.toLowerCase().includes(query.toLowerCase()));
+  
 }
